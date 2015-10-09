@@ -221,6 +221,10 @@ LUA_API lua_State *lua_newstate(lua_Alloc f, void *ud)
   return L;
 }
 
+LUA_API void *lua_blkz_state_getud(lua_State *L){
+	return G(L)->allocd;	// @ lua reference: ->ud 
+}//end: lua_blkz_state_getud()
+
 static TValue *cpfinalize(lua_State *L, lua_CFunction dummy, void *ud)
 {
   UNUSED(dummy);
