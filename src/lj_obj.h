@@ -515,6 +515,7 @@ typedef struct global_State {
   MSize strnum;		/* Number of strings in hash table. */
   lua_Alloc allocf;	/* Memory allocator. */
   void *allocd;		/* Memory allocator data. */
+  void *uptr;       /* Blockz: Per Instance User Pointer */
   GCState gc;		/* Garbage collector. */
   SBuf tmpbuf;		/* Temporary buffer for string concatenation. */
   Node nilnode;		/* Fallback 1-element hash part (nil key and value). */

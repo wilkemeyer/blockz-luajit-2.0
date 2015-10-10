@@ -195,6 +195,7 @@ LUA_API lua_State *lua_newstate(lua_Alloc f, void *ud)
   g->strempty.gct = ~LJ_TSTR;
   g->allocf = f;
   g->allocd = ud;
+  g->uptr = NULL;
   setgcref(g->mainthref, obj2gco(L));
   setgcref(g->uvhead.prev, obj2gco(&g->uvhead));
   setgcref(g->uvhead.next, obj2gco(&g->uvhead));
@@ -220,6 +221,14 @@ LUA_API lua_State *lua_newstate(lua_Alloc f, void *ud)
   L->status = 0;
   return L;
 }
+
+LUA_API void lua_blkz_state_set_uptr(lua_State *L, void *uptr){
+	G(L)->uptr = uptr;
+}//end: lua_blkz_state_set_uptr()
+
+LUA_API void *lua_blkz_state_get_uptr(lua_State *L){
+	return G(L)->uptr;	// @ lua reference: ->ud 
+}//end: lua_blkz_state_get_uptr()
 
 static TValue *cpfinalize(lua_State *L, lua_CFunction dummy, void *ud)
 {

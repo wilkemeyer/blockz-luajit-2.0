@@ -113,6 +113,12 @@ LUA_API lua_State *(lua_newthread) (lua_State *L);
 
 LUA_API lua_CFunction (lua_atpanic) (lua_State *L, lua_CFunction panicf);
 
+/* 
+** Blockz Extension: Per State User PTR 
+*/
+LUA_API void        (lua_blkz_state_set_uptr)(lua_State *L, void *uptr);
+LUA_API void       *(lua_blkz_state_get_uptr)(lua_State *L);
+
 
 /*
 ** basic stack manipulation
